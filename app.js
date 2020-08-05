@@ -43,7 +43,7 @@ class UI {
                 <article class="product">
                     <div class="img-container">
                         <img
-                            src=${product.image}
+                            src=${product.image},
                             alt="product"
                             class="product-img"
                         />
@@ -52,11 +52,13 @@ class UI {
 							add to bag
 						</button>
                     </div>
-                    <h3>queen bed</h3>
-                    <h4>$16</h4>
+                    <h3>${product.title}</h3>
+                   <h4>${product.price}</h4>
                 </article>
                 <!--end of single product-- >
-        })
+                ;
+        });
+        productsDOM.innerHTML = result;
     }
 }
 //local stprage
