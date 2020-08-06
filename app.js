@@ -36,13 +36,11 @@ class UI {
 	displayProducts(products) {
 		let result = "";
 		products.forEach((product) => {
-			//1.43.23
-			result += `
-               < !--single product-- >
+			result += `<!--single product-->
                 <article class="product">
                     <div class="img-container">
                         <img
-                            src=${product.image},
+                            src=${product.image}
                             alt="product"
                             class="product-img"
                         />
@@ -54,8 +52,7 @@ class UI {
                     <h3>${product.title}</h3>
                    <h4>${product.price}</h4>
                 </article>
-                <!--end of single product-- >
-                ;`;
+                <!--end of single product-- >`;
 		});
 		productsDOM.innerHTML = result;
 	}
@@ -70,3 +67,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	//get all products
 	products.getProducts().then((products) => ui.displayProducts(products));
 });
+
+//1.46
