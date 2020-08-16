@@ -6,6 +6,7 @@ const clearCartBtn = document.querySelector(".clear-cart");
 const cartDOM = document.querySelector(".cart");
 const cartOverlay = document.querySelector(".cart-overlay");
 const cartItems = document.querySelector(".cart-items");
+const cartContent = document.querySelector(".cart-content");
 const cartTotal = document.querySelector(".cart-total");
 const productsDOM = document.querySelector(".products-center");
 
@@ -83,7 +84,9 @@ class UI {
 				//set cart values
 				this.setCartValues(cart);
 				//display cart items
+				this.addCartItem(cartItems);
 				//show the cart
+				this.showCart();
 			});
 		});
 	}
@@ -95,6 +98,29 @@ class UI {
 			tempTotal += item.price * item.amount;
 			itemsTotal += item.amount;
 		});
+		cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
+		cartItems.innerText = itemsTotal;
+	}
+	addCartItem(item) {
+		//2.30.12
+		const div = document.createElement("div");
+		div.classList.add("cart-item");
+		div.innerHTML = `	<img src="./images/product-1.jpeg" alt="product" />
+						<div>
+							<h4>${item.title}</h4>
+							<h5>$${item.price}</h5>
+							<span class="remove-item" data-id=${item.id}>remove</span>
+						</div>
+						<div>
+							<i class="fas fa-chevron-up" data-id=${item.id}></i>
+							<p class="item-amount">${item.amount}</p>
+							<i class="fas fa-chevron-down" data-id=${item.id}></i>
+                        </div>`;
+		cartContent.appendChild(div);
+	}
+	showCart() {
+		cartOverlay.classList.add("transparentBcg");
+		cartDOM.classList.add("showCart");
 	}
 }
 //local storage
@@ -129,4 +155,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 });
 
-//2.25
+//2.35
